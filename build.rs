@@ -11,10 +11,16 @@ fn main() {
         return
     }
 
-    if vcpkg::probe_package("assimp").is_ok() {
-        return
+    match vcpkg::probe_package("assimp") {
+        Ok(_) => {
+            return;
+        }
+        Err(e) => {
+            println!("Note: the vcpkg build helper did not find native libs for assimp. \
+            This is not necessarily an error. {}", e);
+        }
     }
-panic!();
+    panic!();
     // Compile assimp from source
     // Disable unnecessary stuff, it takes long enough to compile already
     let dst = Config::new("assimp")
