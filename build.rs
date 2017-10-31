@@ -1,5 +1,6 @@
 extern crate cmake;
 extern crate pkg_config;
+extern crate vcpkg;
 
 use cmake::Config;
 use std::env;
@@ -7,6 +8,10 @@ use std::env;
 fn main() {
     // Use system libassimp if it exists
     if let Ok(..) = pkg_config::Config::new().atleast_version("4.0.0").find("assimp") {
+        return
+    }
+
+    if vcpkg::probe_package("assimp").is_ok() {
         return
     }
 
