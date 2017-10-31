@@ -14,7 +14,7 @@ fn main() {
     if vcpkg::probe_package("assimp").is_ok() {
         return
     }
-
+panic!();
     // Compile assimp from source
     // Disable unnecessary stuff, it takes long enough to compile already
     let dst = Config::new("assimp")
