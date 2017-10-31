@@ -2,6 +2,12 @@ environment:
   matrix:
   - TARGET: x86_64-pc-windows-msvc
   - TARGET: i686-pc-windows-msvc
+  - TARGET: x86_64-pc-windows-msvc
+    RRUSTFLAGS: -Ctarget-feature=+crt-static
+    VCPKG_DEFAULT_TRIPLET: x64-windows
+  - TARGET: x86_64-pc-windows-msvc
+    VCPKGRS_DYNAMIC: 1
+    VCPKG_DEFAULT_TRIPLET: x64-windows
 
 install:
   - git submodule update --init --recursive
@@ -10,6 +16,10 @@ install:
   - SET PATH=%PATH%;C:\Program Files (x86)\Rust\bin
   - rustc -V
   - cargo -V
+  - if defined VCPKG_DEFAULT_TRIPLET git clone https://github.com/Microsoft/vcpkg c:\projects\vcpkg
+  - if defined VCPKG_DEFAULT_TRIPLET c:\projects\vcpkg\bootstrap-vcpkg.bat
+  - if defined VCPKG_DEFAULT_TRIPLET set VCPKG_ROOT=c:\projects\vcpkg
+  - if defined VCPKG_DEFAULT_TRIPLET %VCPKG_ROOT%\vcpkg.exe install assimp
 
 build: false
 
