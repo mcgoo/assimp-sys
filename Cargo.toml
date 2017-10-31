@@ -19,7 +19,7 @@ bitflags = "0.9"
 [build-dependencies]
 cmake = "0.1.25"
 pkg-config = "0.3.9"
-vcpkg = "0.3"
+vcpkg = {git = "https://github.com/mcgoo/vcpkg-rs", branch = "deps"}
 
 [workspace]
 members = ["assimp-sys-test"]
