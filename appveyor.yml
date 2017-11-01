@@ -4,7 +4,7 @@ environment:
   - TARGET: i686-pc-windows-msvc
   - TARGET: x86_64-pc-windows-msvc
     RRUSTFLAGS: -Ctarget-feature=+crt-static
-    VCPKG_DEFAULT_TRIPLET: x64-windows
+    VCPKG_DEFAULT_TRIPLET: x64-windows-static
   - TARGET: x86_64-pc-windows-msvc
     VCPKGRS_DYNAMIC: 1
     VCPKG_DEFAULT_TRIPLET: x64-windows
