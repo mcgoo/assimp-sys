@@ -24,5 +24,6 @@ install:
 build: false
 
 test_script:
+  - dir /s c:\projects\vcpkg\installed
   - cargo test --verbose --release
   - cargo test --verbose --release --manifest-path assimp-sys-test/Cargo.toml
